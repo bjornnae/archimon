@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+    <head>
+        <style type="text/css">
+body {font-family: 'Helvetica', Arial, sans-serif; font-size: 10pt;}
+
+.inputRow {margin:1px; padding:5px; display:block;}
+.inputField {position:absolute; left: 100px; width: 210px;}
+.framed {border: 1px dashed rgb(219, 219, 219); padding: 10px;}
+table {width:100%; border-collapse:collapse; }
+td {border:1px solid gray; padding:3px;}
+
+.column {
+  float: left;
+}
+#experimental {
+    background-color: #c8ffcd;
+    opacity: 0.8;
+    background-size: 10px 10px;
+    background-image: 
+      linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);  
+}
+
+#footer {font-style: italic;}
+
+.left {
+  width: 450px;
+}
+
+.right { 
+}
+</style>
+    <script src="html_helpers.js"></script>
+    <script src="Svg.js"></script>
+    <script src="test.js"></script>
+    <script src="archimon.js"></script>
+    <script src="archimon-view.js"></script>
+    <script src="archimon-model.js"></script>    
+</head>
+<body >
+    
+    <div class="column left">   <div class="framed" id="object">
+        <h3>Object</h3>
+        <a href="javascript:userClicksNewObject()">New</a>&nbsp;|&nbsp;<a href="javascript:userClicksCloneObject()">Clone</a>
+        <form id="objectForm">
+            <span class="inputRow">
+                  <label for ="name">Name</label>
+                  <input  id ="name"  class="inputField" type="text"></input>
+            </span>
+            
+            <span class="inputRow">
+                <label for="id">ID</label>
+                <input  id="id" class="inputField" readonly type="text"></input>
+          </span>
+          
+          <span class="inputRow">
+            <label for="objectType">Type</label>
+            
+            <select id="objectType" class="inputField">
+                <option value="generic">generic</option>
+                <option value="organisation">organisation</option>
+                <option value="business">business</option>
+                <option value="application">application</option>
+                <option value="infra">infrastructure</option>
+                </select>
+        </span>
+      
+            <h4>Attributes</h4>
+            <table id="attributes">
+                <thead><tr><th>Key</th><th>Value</th></tr></thead>
+                <tbody id="attributeTBody">
+                </tbody>
+            </table>
+            <a href="javascript:userClicksAddAttribute();">Add</a>
+            <br/>
+            <input type="button" value="OK" onclick="javascript:userClicksUpdateObject()"></input>
+        </form>
+    </div>
+    
+    <div id="objectList" class="framed">
+        <h3>Objects</h3>
+        <table id="objectListTable">
+            <thead><th>Name</th><th>Id</th></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div id="relationsList" class="framed">
+        <h3>Relations</h3>
+        <table id="relationsListTable">
+            <thead><th>Name</th><th>Id</th><th>From</th><th>To</th></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div id="viewList" class="framed">
+        <h3>Views</h3>
+        <a href="javascript:userClicksAddView()">Add view</a>
+        <table id="viewListTable">
+            <thead><th>Name</th><th>Id</th></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div id="experimental" class="framed">
+        <h3>DevFeat</h3>
+        <ul>
+            <li><a href="javascript:test1();">Test SVG: Draw rectangles</a></li>
+            <li><a href="javascript:model_dumpModel()">Dump Model to Console</a></li>
+        </ul>
+        
+        
+    </div>
+
+    <div id="footer">
+        Archimon Modeller Pre 1.0 2022-10
+    </div>
+</div >
+
+<div class="column right">
+    <div id="svgscene">
+
+    </div>
+</div>
+<script>
+    controller_reloadPage()
+</script>
+
+</body>
+</html>
